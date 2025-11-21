@@ -1,0 +1,98 @@
+/* Fundo verde */
+.topo-lista {
+    background-color: #008b8b;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card */
+.lista-container {
+    width: 90%;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.titulo-lista {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Tabela */
+.tabela-lista {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+.tabela-lista th,
+.tabela-lista td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.tabela-lista th {
+    background: #f3f3f3;
+    font-weight: bold;
+}
+
+/* Botão adicionar produto */
+.add-produto-btn {
+    display: block;
+    margin: 25px auto 0;
+    padding: 10px 15px;
+    background-color: #008b8b;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Alerta de estoque baixo (badge laranja) */
+.alerta-estoque {
+    display: inline-block;
+    margin-left: 8px;      /* espaço entre número do estoque e o badge */
+    padding: 4px 8px;
+    background-color: #fd8115; /* laranja */
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+/* Botão Editar (azul) */
+.btn-editar {
+    padding: 6px 12px;
+    background-color: #008b8b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Botão Excluir (vermelho) */
+.btn-excluir {
+    padding: 6px 12px;
+    margin-left: 10px;
+    background-color: #e63946;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Hover correto para Excluir */
+.btn-excluir:hover {
+    background-color: #c53030; /* vermelho escurecido */
+}
