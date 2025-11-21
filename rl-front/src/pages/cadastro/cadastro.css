@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.topo-cadastro {
+  height: 91vh;
+  background-color: #008b8b;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.conteudo-cadastro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 35%;
+  background-color: #fff;
+
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+              rgba(0, 0, 0, 0.12) 0px -12px 30px,
+              rgba(0, 0, 0, 0.12) 0px 4px 6px,
+              rgba(0, 0, 0, 0.17) 0px 12px 13px,
+              rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  height: 70vh;
+}
+
+form {
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+h1 {
+  grid-column: span 2;
+  font-family: "Arial", sans-serif;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #000;
+  text-align: center;
+
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+}
+
+label {
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: "Arial", sans-serif;
+}
+
+/* Descrição ocupa toda a linha */
+.descricao {
+  grid-column: span 2;
+}
+
+/* Botão centralizado */
+button {
+  grid-column: span 2;
+  width: 150px;
+  margin: 20px auto 0;
+
+  padding: 10px;
+  background-color: #008b8b;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #006f6f;
+}
