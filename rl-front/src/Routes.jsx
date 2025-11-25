@@ -8,6 +8,7 @@ export default function RoutesWeb() {
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<Cadastro />} />
+                    <Route path='/editar/:id' element={<Cadastro />} />
                     <Route path='/lista' element={<Lista />} />
                 </Routes>
             </BrowserRouter>

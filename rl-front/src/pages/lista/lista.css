@@ -48,7 +48,7 @@
 .add-produto-btn {
     display: block;
     margin: 25px auto 0;
-    padding: 10px 15px;
+    padding: 15px 5px;
     background-color: #008b8b;
     color: white;
     font-weight: bold;
@@ -70,7 +70,7 @@
 }
 
 /* Botão Editar (azul) */
-.btn-editar {
+.btn-alterar {
     padding: 6px 12px;
     background-color: #008b8b;
     color: white;
@@ -94,5 +94,5 @@
 
 /* Hover correto para Excluir */
 .btn-excluir:hover {
-    background-color: #c53030; /* vermelho escurecido */
+    background-color: #c53030;
 }

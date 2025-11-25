@@ -41,5 +41,15 @@ export const deleteProduct= async (product) => {
         return response.data;
     } catch (error){
         throw error;
-    }  
-} 
+    } 
+}
+//GET BY ID
+export const getProductById= async (id) => {
+    // eslint-disable-next-line no-useless-catch
+    try{
+    const response = await api.get(`/product/${id}`);
+    return response.data;
+    } catch (error){
+        throw error.response.data.message;
+    }
+}

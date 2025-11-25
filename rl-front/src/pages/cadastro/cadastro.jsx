@@ -3,56 +3,75 @@ import "./cadastro.css";
 import { Link } from "react-router-dom";
 import Footer from "../../components/rodape/footer";
 
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ApiService from "../../connection/apiService";
 
 export default function Cadastro() {
 
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const [formData, setFormData] = useState({
     nameProduct: "",
-    description:"",
-    producer:"",
-    price:0,
-    stock:0
+    description: "",
+    producer: "",
+    price: 0,
+    stock: 0
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value});
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
-    
-    try{
 
-      const product ={
-      ...formData,
-      price: Number(formData.price),
-      stock: Number(formData.stock),
-    };
+    try {
+      const product = {
+        ...formData,
+        price: Number(formData.price),
+        stock: Number(formData.stock),
+      };
 
+      if (id) {
+        await ApiService.product.updateProduct( id, product );
+        toast.success("Produto atualizado com sucesso!");
+        
+      } else {
       await ApiService.product.createProduct(product);
-
       toast.success("Produto cadastrado com sucesso!");
+      }
       navigate("/lista");
     }
-    catch (error){
-      if(error.response && error.response.status === 400){
+    catch (error) {
+      if (error.response && error.response.status === 400) {
         const errors = error.response.data;
 
         Object.values(errors).forEach((msg) => toast.error(msg));
       }
-      else{
+      else {
         toast.error("Erro ao cadastrar produto.");
       }
     }
   };
+
+  useEffect(() => {
+  if (id) {
+    const fetchProduct = async () => {
+      try {
+        const response = await ApiService.product.getProductById(id);
+        setFormData(response);
+      } catch (error) {
+        toast.error("Erro ao buscar produto.");
+      }
+    };
+
+    fetchProduct();
+  }
+}, [id]);
 
   return (
     <>
@@ -68,7 +87,7 @@ export default function Cadastro() {
 
             <div>
               <label>Fabricante:</label>
-              <input type="text" id="fabricante" name="producer" value={formData.producer} onChange={handleChange}  />
+              <input type="text" id="fabricante" name="producer" value={formData.producer} onChange={handleChange} />
             </div>
 
             <div>
@@ -78,7 +97,7 @@ export default function Cadastro() {
 
             <div>
               <label>Quantidade em estoque:</label>
-              <input type="number" id="estoque" name="stock" value={formData.stock}  onChange={handleChange} />
+              <input type="number" id="estoque" name="stock" value={formData.stock} onChange={handleChange} />
             </div>
 
             <div>
@@ -86,8 +105,8 @@ export default function Cadastro() {
               <textarea type="text" id="descricao" name="description" value={formData.description} onChange={handleChange} ></textarea>
             </div>
 
-            <button type="submit">Enviar</button>            
-            
+            <button type="submit">Enviar</button>
+
           </form>
         </main>
       </article>

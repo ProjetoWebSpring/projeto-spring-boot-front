@@ -1,34 +1,25 @@
 import { Link } from "react-router-dom";
 import Footer from "../../components/rodape/footer";
 import "./lista.css";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ApiService from "../../connection/apiService";
 
 export default function Lista() {
-  const produtos = [
-    {
-      id: 1,
-      nome: "Play Station 5",
-      marca: "Sony",
-      preco: "4.000,00",
-      estoque: 5,
-      desc: "Video Game 1",
-    },
-    {
-      id: 2,
-      nome: "X Box One",
-      marca: "Microsoft",
-      preco: "3.500,00",
-      estoque: 8,
-      desc: "Video Game 2",
-    },
-    {
-      id: 3,
-      nome: "Nintendo Switch",
-      marca: "Nintendo",
-      preco: "2.500,00",
-      estoque: 2,
-      desc: "Video Game 3",
-    },
-  ];
+  const [produtos, setProdutos] = useState([]);
+  const navigate = useNavigate();
+
+  async function fetchProducts() {
+    try {
+      const response = await ApiService.product.getProduct();
+      setProdutos(response);
+    } catch (error) {
+      console.error("Erro ao buscar produtos:", error);
+    }
+  }
+  useEffect(() => { 
+    fetchProducts([]);
+  }, []);
 
   return (
     <article className="topo-lista">
@@ -52,19 +43,19 @@ export default function Lista() {
             {produtos.map((p) => (
               <tr key={p.id}>
                 <td>{p.id}</td>
-                <td>{p.nome}</td>
-                <td>{p.marca}</td>
-                <td>{p.preco}</td>
+                <td>{p.nameProduct}</td>
+                <td>{p.producer}</td>
+                <td>{p.price}</td>
                 <td>
-                  {p.estoque}
-                  {p.estoque <= 3 && (
+                  {p.stock}
+                  {p.stock <= 3 && (
                     <span className="alerta-estoque">Estoque baixo</span>
                   )}
                 </td>
-                <td>{p.desc}</td>
+                <td>{p.description}</td>
                 <td>
-                  <Link to={`/${p.id}`}>
-                    <button className="btn-editar">Editar</button>    
+                  <Link to={`/editar/${p.id}`}>
+                    <button className="btn-alterar">Alterar</button>    
                   </Link>
                   <button className="btn-excluir">Excluir</button>
                 </td>
@@ -74,7 +65,7 @@ export default function Lista() {
         </table>
         
         <Link to="/" style={{textDecoration: "none"}}>
-            <button className="add-produto-btn">Adicionar Produto</button>
+            <button className="add-produto-btn">Incluir novo produto</button>
         </Link>
       </div>
       <Footer />
