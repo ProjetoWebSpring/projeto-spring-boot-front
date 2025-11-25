@@ -1,18 +1,15 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Cadastro from './pages/cadastro/cadastro'
-import Lista from './pages/lista/lista'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Cadastro from "./pages/cadastro/cadastro";
+import Lista from "./pages/lista/lista";
 
 export default function RoutesWeb() {
-    return(
-        <>
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<Cadastro />} />
-                    <Route path='/editar/:id' element={<Cadastro />} />
-                    <Route path='/lista' element={<Lista />} />
-                </Routes>
-            </BrowserRouter>
-        </>
-    );
-
+  return (
+    <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Cadastro />} />
+                <Route path='/editar/:id' element={<Cadastro />} />
+                <Route path='/lista' element={<Lista />} />
+            </Routes>
+    </BrowserRouter>
+  );
 }

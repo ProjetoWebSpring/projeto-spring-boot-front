@@ -23,14 +23,11 @@ export const getProduct= async(product) => {
 }
 
 //UPDATE
-export const updateProduct= async (product) => {
-    // eslint-disable-next-line no-useless-catch
-    try{
-        const response = await api.put(`/product/${product.id}`, product);
-        return response.data;
-    } catch (error){
-        throw error;
-    }
+export const updateProduct= async (id, product) => {
+
+    const response = await api.put(`/product/${id}`, product);
+    return response.data;
+   
 }
 
 //DELETE
