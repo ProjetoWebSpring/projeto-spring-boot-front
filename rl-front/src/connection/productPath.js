@@ -12,8 +12,15 @@ export const createProduct= async (product) => {
 };
 
 //GET
-
-
+export const getProduct= async(product) => {
+    // eslint-disable-next-line no-useless-catch
+    try{
+        const response = await api.get('/product', product);
+        return response.data
+    } catch (error){
+        throw error;
+    }
+}
 
 //UPDATE
 export const updateProduct= async (product) => {
@@ -27,3 +34,12 @@ export const updateProduct= async (product) => {
 }
 
 //DELETE
+export const deleteProduct= async (product) => {
+    // eslint-disable-next-line no-useless-catch
+    try{
+        const response = await api.delete(`/product/${product.id}`, product);
+        return response.data;
+    } catch (error){
+        throw error;
+    }  
+} 
