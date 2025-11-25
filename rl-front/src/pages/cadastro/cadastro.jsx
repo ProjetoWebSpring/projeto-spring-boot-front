@@ -81,7 +81,7 @@ export default function Cadastro() {
               <input type="number" id="estoque" name="stock" value={formData.stock}  onChange={handleChange} />
             </div>
 
-            <div className="descricao">
+            <div>
               <label>Descrição:</label>
               <textarea type="text" id="descricao" name="description" value={formData.description} onChange={handleChange} ></textarea>
             </div>

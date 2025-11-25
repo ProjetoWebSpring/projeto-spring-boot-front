@@ -67,6 +67,15 @@ input {
   font-family: "Arial", sans-serif;
 }
 
+textarea{
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: "Arial", sans-serif;
+  resize: none;
+  min-height: 80px;
+}
+
 /* Descrição ocupa toda a linha */
 .descricao {
   grid-column: span 2;
